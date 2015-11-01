@@ -9,3 +9,8 @@
     - role: ansible-newrelic
       newrelic_license: $NEWRELIC_LICENSE
       newrelic_php_apm_enabled: yes
+
+  tasks:
+    - debug:
+        var: newrelic_license
+      
