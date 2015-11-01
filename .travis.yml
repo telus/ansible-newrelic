@@ -17,6 +17,9 @@ install:
   # configure ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
+  # install PHP for newrelic php-fpm test
+  - ansible-galaxy install telusdigital.php
+
   # install dependencies from meta/main.yml
   - "read dependencies < <(cat meta/main.yml  | grep 'role:' | awk '{print $3}' | tr '\n' ' '); ansible-galaxy install $dependencies"
 
