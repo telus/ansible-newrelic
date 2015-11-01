@@ -1,0 +1,6 @@
+----    
+- name: service | newrelic | started
+  service:   
+    state: started   
+    name: newrelic-sysmond   
+    enabled: yes

@@ -72,3 +72,4 @@
   command: php5enmod newrelic
   notify: Reload Service | php5-fpm
   when: newrelic_php_apm_enabled
+
