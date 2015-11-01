@@ -4,4 +4,3 @@ localhost
 [local:vars]
 project=travis
 environment_tier=testing
-newrelic_license=$NEWRELIC_LICENSE

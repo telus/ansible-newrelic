@@ -8,6 +8,7 @@
       repository_url: "deb http://apt.newrelic.com/debian/ newrelic non-free"
     - role: ansible-newrelic
       newrelic_php_apm_enabled: yes
+      newrelic_license: lookup('env','NEWRELIC_LICENSE')
 
   tasks:
     - debug:
