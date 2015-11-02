@@ -34,7 +34,8 @@ script:
   - "ansible-playbook -i tests/inventory tests/$PLAYBOOK --connection=local --sudo"
 
   # set license key?!?
-  - "nrsysmond-config --set license_key=$NEWRELIC_LICENSE"
+  - echo $NEWRELIC_LICENSE
+  # - "nrsysmond-config --set license_key=$NEWRELIC_LICENSE"
 
   # check that service starts
   - sudo service newrelic-sysmond start
