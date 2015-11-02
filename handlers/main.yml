@@ -1,0 +1,20 @@
+---
+- name: service | newrelic | started
+  service:
+    name: newrelic-sysmond
+    state: started
+
+- name: service | newrelic | stopped
+  service:
+    name: newrelic-sysmond
+    state: stopped
+
+- name: service | newrelic | restarted
+  service:
+    name: newrelic-sysmond
+    state: restarted
+
+- name: service | newrelic | reloaded
+  service:
+    name: newrelic-sysmond
+    state: reloaded

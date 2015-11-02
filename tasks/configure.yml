@@ -5,7 +5,7 @@
     path: /etc/php5/fpm/conf.d/newrelic.ini
   tags:
     - newrelic
-    - housekeeping
+    - php
 
 - name: Configure sysmond | license_key
   lineinfile:
@@ -13,10 +13,8 @@
     dest: /etc/newrelic/nrsysmond.cfg
     regexp: '^#* *license_key'
     line: 'license_key={{ newrelic_license }}'
+  notify: service | newrelic | restarted
   tags:
-    - configuration
-    - precise-configuration
-    - external-service
     - newrelic
 
 - name: Configure sysmond | proxy
@@ -26,10 +24,8 @@
     regexp: '^#* *proxy'
     line: "proxy={{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}"
   when: newrelic_proxy_required
+  notify: service | newrelic | restarted
   tags:
-    - configuration
-    - precise-configuration
-    - external-service
     - newrelic
 
 - name: Copy PHP APM Template
@@ -45,9 +41,6 @@
   notify: Reload Service | php5-fpm
   when: newrelic_php_apm_enabled
   tags:
-    - configuration
-    - precise-configuration
-    - external-service
     - newrelic
     - php
 
@@ -60,9 +53,6 @@
   notify: Reload Service | php5-fpm
   when: newrelic_php_apm_enabled
   tags:
-    - configuration
-    - precise-configuration
-    - external-service
     - newrelic
     - php
 
@@ -75,9 +65,6 @@
   notify: Reload Service | php5-fpm
   when: 'newrelic_php_apm_enabled and newrelic_proxy_required'
   tags:
-    - configuration
-    - precise-configuration
-    - external-service
     - newrelic
     - php
 
@@ -85,3 +72,4 @@
   command: php5enmod newrelic
   notify: Reload Service | php5-fpm
   when: newrelic_php_apm_enabled
+
