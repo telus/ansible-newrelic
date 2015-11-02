@@ -1,4 +1,4 @@
 ---
 - include: install.yml
 - include: configure.yml
-- include: services.yml
+- include: service.yml

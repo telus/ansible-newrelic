@@ -1,6 +1,0 @@
----
-- name: service | newrelic | sarted
-  service:   
-    state: started   
-    name: newrelic-sysmond   
-    enabled: yes
