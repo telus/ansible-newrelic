@@ -40,7 +40,7 @@
   shell: newrelic-install install
   args:
     executable: /bin/bash
-  notify: Reload Service | php5-fpm
+  notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
   tags:
     - monitoring

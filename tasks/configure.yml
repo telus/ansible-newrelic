@@ -38,7 +38,7 @@
     dest: /etc/php5/mods-available/newrelic.ini
     regexp: '^;* *newrelic\.license'
     line: 'newrelic.license = "{{ newrelic_license }}"'
-  notify: Reload Service | php5-fpm
+  notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
   tags:
     - newrelic
@@ -50,7 +50,7 @@
     dest: /etc/php5/mods-available/newrelic.ini
     regexp: '^;* *newrelic\.appname'
     line: 'newrelic.appname = "{{ newrelic_appname }}"'
-  notify: Reload Service | php5-fpm
+  notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
   tags:
     - newrelic
@@ -62,7 +62,7 @@
     dest: /etc/php5/mods-available/newrelic.ini
     regexp: '^;* *newrelic\.daemon\.proxy'
     line: "newrelic.daemon.proxy = \"{{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}\""
-  notify: Reload Service | php5-fpm
+  notify: service | php5-fpm | reloaded
   when: 'newrelic_php_apm_enabled and newrelic_proxy_required'
   tags:
     - newrelic
@@ -70,6 +70,6 @@
 
 - name: Enable PHP APM Extension
   command: php5enmod newrelic
-  notify: Reload Service | php5-fpm
+  notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
 
