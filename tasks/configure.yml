@@ -1,4 +1,13 @@
 ---
+- name: Remove Duplicate Config
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+    - /etc/php5/fpm/conf.d/newrelic.ini
+  tags:
+    - newrelic
+    - php
 
 - name: Configure sysmond | license_key
   lineinfile:
@@ -65,14 +74,3 @@
   command: php5enmod newrelic
   notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
-
-- name: Remove Duplicate Config
-  file:
-    state: absent
-    path: "{{ item }}"
-  with_items:
-    - /etc/php5/fpm/conf.d/newrelic.ini
-    - /etc/php5/cli/conf.d/newrelic.ini
-  tags:
-    - newrelic
-    - php
