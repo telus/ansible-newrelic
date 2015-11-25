@@ -69,7 +69,7 @@
 - name: Remove Duplicate Config
   file:
     state: absent
-    path: "{{ items }}"
+    path: "{{ item }}"
   with_items:
     - /etc/php5/fpm/conf.d/newrelic.ini
     - /etc/php5/cli/conf.d/newrelic.ini
