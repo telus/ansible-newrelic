@@ -3,6 +3,7 @@
 [NewRelic](https://newrelic.com/) - Application Performance Monitoring
 
 [![Build Status](https://travis-ci.org/telusdigital/ansible-newrelic.svg?branch=master)](https://travis-ci.org/telusdigital/ansible-newrelic)
+
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
 
 Tunables

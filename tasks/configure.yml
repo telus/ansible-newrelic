@@ -1,5 +1,4 @@
 ---
-
 - name: Configure sysmond | license_key
   lineinfile:
     state: present
