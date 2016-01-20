@@ -9,3 +9,4 @@
       newrelic_php_apm_enabled: yes
       newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
       project: travis
+      environment_tier: travis
