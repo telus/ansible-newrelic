@@ -1,15 +1,4 @@
 ---
-- name: "Directory Exists | {{ php_log_root }}"
-  file:
-    state: directory
-    path: /etc/php5/mods-available
-    owner: "{{ php_user }}"
-    group: "{{ php_group }}"
-    mode: 0775
-  tags:
-    - filesystem-layout
-    - php
-
 - name: Configure sysmond | license_key
   lineinfile:
     state: present
