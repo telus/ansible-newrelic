@@ -1,11 +1,22 @@
 ---
+- name: "Directory Exists | {{ php_log_root }}"
+  file:
+    state: directory
+    path: /etc/php5/mods-available
+    owner: "{{ php_user }}"
+    group: "{{ php_group }}"
+    mode: 0775
+  tags:
+    - filesystem-layout
+    - php
+
 - name: Configure sysmond | license_key
   lineinfile:
     state: present
     dest: /etc/newrelic/nrsysmond.cfg
     regexp: '^#* *license_key'
     line: 'license_key={{ newrelic_license }}'
-  notify: service | newrelic | restarted
+  notify: service | newrelic | reloaded
   tags:
     - newrelic
 
@@ -16,7 +27,7 @@
     regexp: '^#* *proxy'
     line: "proxy={{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}"
   when: newrelic_proxy_required
-  notify: service | newrelic | restarted
+  notify: service | newrelic | reloaded
   tags:
     - newrelic
 
