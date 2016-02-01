@@ -6,7 +6,7 @@
   roles:
     # name of role to test
     - role: ansible-newrelic
-      newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
+      newrelic_license: "<%= ENV['NEWRELIC_LICENSE']%>"
       project: travis
       environment_tier: travis
 
