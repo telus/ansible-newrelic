@@ -1,0 +1,12 @@
+---
+# host to test against
+- hosts: test-kitchen
+  remote_user: root
+
+  roles:
+    # name of role to test
+    - role: ansible-newrelic
+      newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
+      project: travis
+      environment_tier: travis
+
