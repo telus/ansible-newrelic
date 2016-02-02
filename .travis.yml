@@ -1,14 +1,40 @@
 ---
 sudo: required
-# docker is required to run tests
-services: docker
+dist: trusty
+language: generic
+
+env:
+  - PLAYBOOK=test-fpm-install.yml
+  - PLAYBOOK=test-sysmond-install.yml
+
+before_install:
+  - sudo apt-get update -qq
 
 install:
-  - bundle install
+  # install ansible
+  - sudo pip install ansible
+
+  # configure ansible
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+
+  # install PHP for newrelic php-fpm test
+  - ansible-galaxy install telusdigital.php
+
+  # install dependencies from meta/main.yml
+  - "read dependencies < <(cat meta/main.yml  | grep 'role:' | awk '{print $3}' | tr '\n' ' '); ansible-galaxy install $dependencies --force"
 
 script:
-  # run kitchen tests (destroy, create, converge, setup, verify and destroy)
-  - bundle exec kitchen test
+  # check syntax
+  - "ansible-playbook -i test/inventory test/$PLAYBOOK --syntax-check"
+
+  # initial run
+  - "ansible-playbook -i test/inventory test/$PLAYBOOK --connection=local --sudo"
+
+  # check idempotence
+  - "ansible-playbook -i test/inventory test/$PLAYBOOK --connection=local --sudo"
+
+  # check that service starts
+  - sudo service newrelic-sysmond start
 
 notifications:
   slack:
