@@ -5,7 +5,7 @@
     dest: /etc/newrelic/nrsysmond.cfg
     regexp: '^#* *license_key'
     line: 'license_key={{ newrelic_license }}'
-  notify: service | newrelic | reloaded
+  notify: service | newrelic | restarted
   tags:
     - newrelic
 
@@ -16,7 +16,7 @@
     regexp: '^#* *proxy'
     line: "proxy={{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}"
   when: newrelic_proxy_required
-  notify: service | newrelic | reloaded
+  notify: service | newrelic | restarted
   tags:
     - newrelic
 
