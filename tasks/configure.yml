@@ -75,3 +75,12 @@
   tags:
     - newrelic
     - php
+
+- name: Configure sysmond | labels: application, environment, ip_address, region, availabllity zone
+  lineinfile:
+    state: present
+    dest: /etc/newrelic/nrsysmond.cfg
+    regexp: '^.*labels=label_type:label_value'
+    line: "labels=Application:{{ hostvars[inventory_hostname]['app_name'] }};Environment:{{ hostvars[inventory_hostname]['env'] }};IpAddress:{{ hostvars[inventory_hostname]['ip'] }};Region:{{ hostvars[inventory_hostname]['region'] }};AvailibilityZone:{{ hostvars[inventory_hostname]['availability_zone'] }};"
+  tags:
+    - newrelic
