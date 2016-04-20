@@ -1,9 +1,18 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    - newrelic_server_labels:
+      - "Application:test_app_name"
+      - "Environment:env"
+      - "IPAddress:127.0.0.0"
+      - "Region:region"
+      - "AvailabilityZone:availability_zone"
   roles:
     - role: telusdigital.apt-repository
-      repository_key: "0xb31b29e5548c16bf"
+      repository_key: "0xb31b29e5548c6bf"
       repository_url: "deb http://apt.newrelic.com/debian/ newrelic non-free"
     - role: ansible-newrelic
       newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
+
+

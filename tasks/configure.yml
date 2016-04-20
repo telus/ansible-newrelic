@@ -80,7 +80,7 @@
   lineinfile:
     state: present
     dest: /etc/newrelic/nrsysmond.cfg
-    regexp: "^.*labels=Application:{{ hostvars[inventory_hostname]['app_name'] }}"
+    regexp: "^.*labels="
     line: "labels={{ newrelic_server_labels | join(';') }};"
   notify: service | newrelic | restarted
   tags:
