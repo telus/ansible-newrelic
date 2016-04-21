@@ -1,4 +1,6 @@
 ---
+- include: php-handlers.yml
+
 - name: service | newrelic | started
   service:
     name: newrelic-sysmond

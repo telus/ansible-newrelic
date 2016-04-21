@@ -15,4 +15,4 @@ notifications:
     on_success: change
     on_failure: always
     rooms:
-      - secure: # to generate token see README.md
+      - secure: l+UMuiVKQjX0cfNce8oDEwCd/GCP0ObSzMdKuADjOlFpqYiBX8Tpba1bFR5MY/1nx28bNuzIuXjqSdtbj/l9pszqF/ikpDPdEvlN9wvY7iaNPCRGfrgRHxxk1Rs/sJuhV+2hkknRCdb4zi9BuMPHnO37w+uQkW5waeb5FQ5SniDME0qElSZMG4RdmsUpdSqB7kU7xLqhyij3s5yp12m5MKFHz0NyV6GZcCzWSkrCkwwMioTdPEoLTLzVJKXush/XCmvmY+iaQI208jttm14BG7dXP0SRg2AEQkJEt/6lyNowR3EPVCbAmK/8AriVYoN6emhZY45FNg0hHeInciuS1R64ZYPWCGmQuPjftWoiZKKgPR75uvIYumciJVQ/1vF+MgHFOY54xUWQrKAeZS4rKIZJYySyV0dWy2qL45zSGpzHySLO4AjjCzj+W7v0T1NQukOrwWHsvgBrBxzsf4UhjztXdb4iSu5HnFqoASzqcbrICPiDO7w1imFkh8Z3YBdp9XjSTx44peeJlSOBUFi35ucxeI+DBf1OINmV6uaVVa4LKfejBAn+iQ8EfBr8wU9enpTvwfYtrNEf6FPr7h+KBXcDrIasUC3YrPwHEVCbRx2ZrSeNaIBXJR8UldCI/OEHsUFIwMsILWpjHsvWm7LKsSnhrsatCWpMdi6dxiEepGQ=
