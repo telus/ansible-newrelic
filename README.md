@@ -39,3 +39,4 @@ Contributors
 * Aaron Pederson
 * Prashant Kandathil
 * Ben Visser
+* Nikki

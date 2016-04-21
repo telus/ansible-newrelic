@@ -3,6 +3,7 @@
   service:
     name: newrelic-sysmond
     state: started
+    enabled: yes
 
 - name: service | newrelic | stopped
   service:
