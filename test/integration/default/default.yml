@@ -8,4 +8,5 @@
     - role: ansible-newrelic
       newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
       newrelic_php_apm_enabled: yes
+      newrelic_appname: "FooSite (Production)"
 
