@@ -5,6 +5,11 @@
     dest: /etc/newrelic/nrsysmond.cfg
     regexp: '^#* *license_key'
     line: 'license_key={{ newrelic_license }}'
+  lineinfile:
+    state: present
+    dest: /etc/newrelic/nrsysmond.cfg
+    regexp: "^.*labels"
+    line: "labels={{ newrelic_server_labels | join(';') }};"
   notify: service | newrelic | restarted
   tags:
     - newrelic
@@ -75,16 +80,6 @@
   tags:
     - newrelic
     - php
-
-- name: Configure sysmond | labels-> application, environment, ip_address, region, availabllity zone
-  lineinfile:
-    state: present
-    dest: /etc/newrelic/nrsysmond.cfg
-    regexp: "^.*labels"
-    line: "labels={{ newrelic_server_labels | join(';') }};"
-  notify: service | newrelic | restarted
-  tags:
-    - newrelic
 
 - name: Check configuration file
   command: /bin/cat /etc/newrelic/nrsysmond.cfg
