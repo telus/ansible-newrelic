@@ -9,4 +9,6 @@
       newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
       newrelic_php_apm_enabled: yes
       newrelic_appname: "FooSite (Production)"
+      nginx_auth_password: really-bad-test-password
+      environment_tier: development
 

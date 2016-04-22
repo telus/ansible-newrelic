@@ -6,7 +6,7 @@ describe 'ansible-newrelic::default' do
     it { should be_installed.by('apt') }
   end
 
-   describe service('newrelic-sysmond') do
+  describe service('newrelic-sysmond') do
     it { should be_enabled }
     it { should be_running }
   end
@@ -15,5 +15,3 @@ describe 'ansible-newrelic::default' do
     it { should be_enabled }
     it { should be_running }
   end
-
-end
