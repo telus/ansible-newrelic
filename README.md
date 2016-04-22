@@ -17,13 +17,13 @@ Tunables
 
 Dependencies
 ------------
-* [telusdigital.apt-repository](https://github.com/telusdigital/ansible-apt-repository/)
+* [colstrom.apt-repository](https://github.com/colstrom/ansible-apt-repository/)
 
 Example Playbook
 ----------------
     - hosts: servers
       roles:
-         - role: telusdigital.newrelic
+         - role: colstrom.newrelic
            newrelic_appname: "FooSite (Production)"
            newrelic_php_apm_enabled: yes
            newrelic_license: "YOUR_LICENSE_HERE"

@@ -1,12 +1,11 @@
 ---
 dependencies:
-  - role: telusdigital.apt-repository
+  - role: colstrom.apt-repository
     repository_key: "0xb31b29e5548c16bf"
     repository_url: "deb http://apt.newrelic.com/debian/ newrelic non-free"
 
 galaxy_info:
   author: "Chris Olstrom"
-  company: "TELUS digital"
   description: "Application Performance Monitoring"
   license: MIT
   platforms:
