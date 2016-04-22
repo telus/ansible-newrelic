@@ -11,4 +11,8 @@
       newrelic_appname: "FooSite (Production)"
       nginx_auth_password: really-bad-test-password
       environment_tier: development
+    - tasks:
+        name: Copy PHP APM Template
+        command: cp test/template/newrelic.ini.template /etc/php5/mods-available/newrelic.ini
+        when: newrelic_php_apm_enabled
 
