@@ -80,7 +80,7 @@
   lineinfile:
     state: present
     dest: /etc/newrelic/nrsysmond.cfg
-    regexp: "^.*labels="
+    regexp: "^.*labels ="
     line: "labels={{ newrelic_server_labels | join(';') }};"
   notify: service | newrelic | restarted
   tags:
@@ -90,5 +90,5 @@
   command: /bin/cat /etc/newrelic/nrsysmond.cfg
   register: cat
 
-- name: Print SSH public key
+- name: Print configuration file
   debug: var=cat.stdout
