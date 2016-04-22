@@ -85,3 +85,10 @@
   notify: service | newrelic | restarted
   tags:
     - newrelic
+
+- name: Check configuration file
+  command: /bin/cat /etc/newrelic/nrsysmond.cfg
+  register: cat
+
+- name: Print SSH public key
+  debug: var=cat.stdout
