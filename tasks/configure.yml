@@ -9,6 +9,16 @@
   tags:
     - newrelic
 
+- name: Configure sysmond labels | application, environment, ip_address, region, availability zone
+  lineinfile:
+    state: present
+    dest: /etc/newrelic/nrsysmond.cfg
+    regexp: "^.*labels"
+    line: "labels={{ newrelic_server_labels | join(';') }};"
+  notify: service | newrelic | restarted
+  tags:
+    - newrelic
+
 - name: Configure sysmond | proxy
   lineinfile:
     state: present
