@@ -21,7 +21,7 @@
     - newrelic
 
 - name: Copy PHP APM Template
-  command: cp /usr/lib/newrelic-php5/scripts/newrelic.ini.template /etc/php5/mods-available/newrelic.ini
+  command: cp "{{ newrelic_template }}" /etc/php5/mods-available/newrelic.ini
   when: newrelic_php_apm_enabled
 
 - name: Configure PHP APM | newrelic.license
@@ -64,14 +64,3 @@
   command: php5enmod newrelic
   notify: service | php5-fpm | reloaded
   when: newrelic_php_apm_enabled
-
-- name: Remove Duplicate Config
-  file:
-    state: absent
-    path: "{{ item }}"
-  with_items:
-    - /etc/php5/fpm/conf.d/newrelic.ini
-    - /etc/php5/cli/conf.d/newrelic.ini
-  tags:
-    - newrelic
-    - php

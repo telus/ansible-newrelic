@@ -1,0 +1,21 @@
+---
+- name: service | php5-fpm | started
+  service:
+    name: php5-fpm
+    state: started
+    enabled: yes
+
+- name: service | php5-fpm | stopped
+  service:
+    name: php5-fpm
+    state: stopped
+
+- name: service | php5-fpm | restarted
+  service:
+    name: php5-fpm
+    state: restarted
+
+- name: service | php5-fpm | reloaded
+  service:
+    name: php5-fpm
+    state: reloaded
