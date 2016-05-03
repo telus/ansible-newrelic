@@ -14,6 +14,7 @@ Tunables
 * `newrelic_proxy_port` (integer) - Port for proxy
 * `newrelic_appname` (string) - Name of application
 * `newrelic_license` (string) - License key for NewRelic
+* `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
 
 Dependencies
 ------------

@@ -1,13 +1,6 @@
 ---
 - hosts: localhost
   remote_user: root
-  vars:
-    - newrelic_server_labels:
-      - "Application:test_app_name"
-      - "Environment:env"
-      - "IPAddress:127.0.0.0"
-      - "Region:region"
-      - "AvailabilityZone:availability_zone"
   roles:
     - role: telusdigital.apt-repository
       repository_key: "0xb31b29e5548c16bf"

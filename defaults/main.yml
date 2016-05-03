@@ -5,3 +5,6 @@ newrelic_proxy_address: "outbound.{{ project }}-{{ environment_tier }}.{{ domain
 newrelic_proxy_port: 3128
 newrelic_appname: "{{ project }} ({{ environment_tier }})"
 newrelic_license: ""
+newrelic_server_labels:
+  - "Project:{{ project }}"
+  - "Environment:{{ environment_tier }}"
