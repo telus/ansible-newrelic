@@ -15,6 +15,8 @@ Tunables
 * `newrelic_appname` (string) - Name of application
 * `newrelic_license` (string) - License key for NewRelic
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
+* `newrelic_infra_enabled` (boolean) - Enable Newrelic-Infra Monitoring?
+* `newrelic_infrastructure_license_key` (string) - Newrelic Licence Key
 
 Dependencies
 ------------

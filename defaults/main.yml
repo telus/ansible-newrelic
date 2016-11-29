@@ -8,3 +8,6 @@ newrelic_license: ""
 newrelic_server_labels:
   - "Project:{{ project }}"
   - "Environment:{{ environment_tier }}"
+
+newrelic_infra_enabled: no
+newrelic_infrastructure_license_key: ""
