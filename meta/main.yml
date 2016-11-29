@@ -3,6 +3,8 @@ dependencies:
   - role: telusdigital.apt-repository
     repository_key: "0xb31b29e5548c16bf"
     repository_url: "deb http://apt.newrelic.com/debian/ newrelic non-free"
+  - role: telusdigital.apt-repository
+    repository_url: "deb http://download.newrelic.com/infrastructure_agent/linux/apt {{ ansible_distribution_release }} main"
 
 galaxy_info:
   author: "Chris Olstrom"
