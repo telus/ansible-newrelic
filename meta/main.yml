@@ -10,13 +10,17 @@ galaxy_info:
   author: "Chris Olstrom"
   company: "TELUS digital"
   description: "Application Performance Monitoring"
+  issue_tracker_url: 'https://github.com/telusdigital/ansible-newrelic/issues'
   license: MIT
+  min_ansible_version: 1.9
   platforms:
-    - name: debian
-      versions:
-        - all
     - name: Ubuntu
       versions:
-        - all
-  categories:
+      - lucid
+      - precise
+      - trusty
+      - utopic
+      - vivid
+      - xenial
+  galaxy_tags:
     - monitoring
