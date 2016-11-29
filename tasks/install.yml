@@ -46,3 +46,14 @@
     - monitoring
     - using-newrelic
     - php
+
+- name: Install Packages | apt
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - newrelic-infra
+  when: newrelic_infra_enabled
+  tags:
+    - software-installation
+    - using-apt
