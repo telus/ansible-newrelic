@@ -1,0 +1,33 @@
+#
+#
+# This is a sample newrelic_plugin.yml file.
+#
+# Please make sure to update the license_key information with the license key for your New Relic
+# account.
+#
+#
+newrelic:
+  #
+  # Update with your New Relic account license key:
+  #
+  license_key: {{ newrelic_license }}
+  #
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  #
+  verbose: {{ newrelic_haproxy_verbose }}
+#
+# Agent Configuration:
+#
+agents:
+  {{ newrelic_haproxy_plugin_name }}:
+    # URI of the haproxy CSV stats url. See the 'CSV Export' link on your haproxy stats page (example stats page: http://demo.1wt.eu/).
+    uri: {{ newrelic_haproxy_csv_uri }}
+    # The name of the proxy to monitor. Proxies are typically listed in the haproxy.cfg file.
+    proxy: {{ newrelic_haproxy_proxy }}
+    # If multiple proxies have the same name, specify which proxy you want to monitor (ex: 'frontend' or 'backend')."
+    proxy_type: {{ newrelic_haproxy_proxy_type }}
+    # If protected under basic authentication provide the user name
+    user: {{ newrelic_haproxy_plugin_user }}
+    # If protected under basic authentication provide the password.
+    password: {{ newrelic_haproxy_plugin_password }}
