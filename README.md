@@ -15,6 +15,8 @@ Tunables
 * `newrelic_appname` (string) - Name of application
 * `newrelic_license` (string) - License key for NewRelic
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
+* `newrelic_nginx_enabled` (boolean) - Enable nginx monitoring?
+* `newrelic_nginx_codename` (string) - Ubuntu distro codename used for repo
 
 Dependencies
 ------------

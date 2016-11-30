@@ -8,3 +8,5 @@ newrelic_license: ""
 newrelic_server_labels:
   - "Project:{{ project }}"
   - "Environment:{{ environment_tier }}"
+newrelic_nginx_enabled: no
+newrelic_nginx_codename: "trusty"

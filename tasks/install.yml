@@ -46,3 +46,30 @@
     - monitoring
     - using-newrelic
     - php
+
+- name: Add public key for nginx signing
+  copy: src=nginx_signing.key dest=/tmp/nginx_signing.key
+  when: newrelic_nginx_enabled
+
+- name: Add nginx signing key
+  shell: apt-key add /tmp/nginx_signing.key
+  when: newrelic_nginx_enabled
+
+- name: add nginx repositories
+  apt_repository: repo={{ item }} state=present
+  with_items:
+    - 'deb http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx'
+    - 'deb-src http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx'
+  when: newrelic_nginx_enabled
+
+- name: install nginx newrelic plugin
+  apt: name=nginx-nr-agent state=latest update_cache=yes
+  when: newrelic_nginx_enabled
+
+- name: add nginx configuration template
+  template: src=nginx-nr-agent.ini dest=/etc/nginx-nr-agent/nginx-nr-agent.ini
+  when: newrelic_nginx_enabled
+
+- name: start newrelic nginx plugin
+  service: name=nginx-nr-agent state=started enabled=yes
+  when: newrelic_nginx_enabled
