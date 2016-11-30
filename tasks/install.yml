@@ -64,6 +64,7 @@
 
 - name: create init script for haproxy newrelic plugin
   shell: pleaserun /usr/local/bin/newrelic_haproxy_agent run
+  when: newrelic_haproxy_plugin_enabled
 
 - name: Run newrelic haproxy plugin process
   service: name=newrelic_haproxy_agent state=started enabled=yes
