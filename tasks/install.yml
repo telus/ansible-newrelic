@@ -47,6 +47,14 @@
     - using-newrelic
     - php
 
+- name: Create Licence Key File | newrelic-infra
+  template:
+    src: etc/newrelic-infra.yml
+    dest: /etc/newrelic-infra.yml
+  when: newrelic_infra_enabled
+  tags:
+    - newrelic-infra
+
 - name: Install Packages | apt
   apt:
     state: latest
