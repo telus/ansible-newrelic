@@ -11,3 +11,6 @@ newrelic_server_labels:
 
 newrelic_infra_enabled: no
 newrelic_infrastructure_license_key: ""
+
+newrelic_infra_enabled: no
+newrelic_infrastructure_license_key: ""
