@@ -17,6 +17,14 @@ Tunables
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
 * `newrelic_infra_enabled` (boolean) - Enable Newrelic-Infra Monitoring?
 * `newrelic_infrastructure_license_key` (string) - Newrelic Licence Key
+* `newrelic_haproxy_plugin_enabled` (boolean) - Enable monitoring for HAProxy?
+* `newrelic_haproxy_verbose` (boolean) - Verbose output for plugin
+* `newrelic_haproxy_plugin_name` (string) - Display name of plugin on NewRelic
+* `newrelic_haproxy_csv_uri` (string) - URI of the haproxy CSV stats url
+* `newrelic_haproxy_plugin_user` (string) - User for HaProxy stats page
+* `newrelic_haproxy_plugin_password` (string) - Password for HaProxy stats page
+* `newrelic_haproxy_proxy` (string) - The name of the proxy to monitor. Proxies are typically listed in the haproxy.cfg file
+* `newrelic_haproxy_proxy_type` (string) - If multiple proxies have the same name, specify which proxy you want to monitor
 
 Dependencies
 ------------
@@ -42,3 +50,4 @@ Contributors
 * [Aaron Pederson](https://aaronpederson.github.io) | [e-mail](mailto:aaronpederson@gmail.com) | [Twitter](https://twitter.com/GunFuSamurai)
 * Prashant Kandathil
 * Ben Visser
+* Alexandar Podobnik
