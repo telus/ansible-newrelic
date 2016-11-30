@@ -46,3 +46,39 @@
     - monitoring
     - using-newrelic
     - php
+
+- name: Install newrelic haproxy plugin gem
+  gem:
+    name: newrelic_haproxy_agent
+    state: latest
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - software-installation
+
+- name: Generate newrelic haproxy plugin configuration
+  shell: newrelic_haproxy_agent install
+  when: newrelic_haproxy_plugin_enabled
+
+- name: Add newrelic haproxy plugin configuration
+  template:
+    src: etc/newrelic_haproxy_agent.yml
+    dest: /etc/newrelic/newrelic_haproxy_agent.yml
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - newrelic-infra
+
+- name: add init script for newrelic haproxy plugin
+  copy:
+    src: etc/init.d/newrelic_haproxy_agent
+    dest: /etc/init.d/newrelic_haproxy_agent
+    mode: a+x
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - newrelic-infra
+
+- name: Run newrelic haproxy plugin process
+  service:
+    name: newrelic_haproxy_agent
+    state: started
+    enabled: yes
+  when: newrelic_haproxy_plugin_enabled
