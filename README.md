@@ -17,6 +17,8 @@ Tunables
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
 * `newrelic_nginx_enabled` (boolean) - Enable nginx monitoring?
 * `newrelic_nginx_codename` (string) - Ubuntu distro codename used for repo
+* `newrelic_nginx_name` (string) - Display name for the application
+* `newrelic_nginx_url` (string) - Url for nginx instance
 
 Dependencies
 ------------

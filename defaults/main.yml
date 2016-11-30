@@ -10,3 +10,5 @@ newrelic_server_labels:
   - "Environment:{{ environment_tier }}"
 newrelic_nginx_enabled: no
 newrelic_nginx_codename: "trusty"
+newrelic_nginx_name: "example"
+newrelic_nginx_url: ""
