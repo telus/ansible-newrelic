@@ -18,3 +18,23 @@
   service:
     name: newrelic-sysmond
     state: reloaded
+
+- name: service | newrelic | started
+  service:
+    name: newrelic-infra
+    state: started
+
+- name: service | newrelic | stopped
+  service:
+    name: newrelic-infra
+    state: stopped
+
+- name: service | newrelic | restarted
+  service:
+    name: newrelic-infra
+    state: restarted
+
+- name: service | newrelic | reloaded
+  service:
+    name: newrelic-infra
+    state: reloaded

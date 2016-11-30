@@ -47,6 +47,25 @@
     - using-newrelic
     - php
 
+- name: Create Licence Key File | newrelic-infra
+  template:
+    src: etc/newrelic-infra.yml
+    dest: /etc/newrelic-infra.yml
+  when: newrelic_infra_enabled
+  tags:
+    - newrelic-infra
+
+- name: Install Packages | apt
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - newrelic-infra
+  when: newrelic_infra_enabled
+  tags:
+    - software-installation
+    - using-apt
+
 - name: Install newrelic haproxy plugin gem
   gem:
     name: newrelic_haproxy_agent
