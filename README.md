@@ -27,8 +27,9 @@ Tunables
 * `newrelic_haproxy_proxy_type` (string) - If multiple proxies have the same name, specify which proxy you want to monitor
 * `newrelic_nginx_enabled` (boolean) - Enable nginx monitoring?
 * `newrelic_nginx_codename` (string) - Ubuntu distro codename used for repo
+* `newrelic_nginx_poll_interval` (integer) - Poll interval for nginx plugin
 * `newrelic_nginx_name` (string) - Display name for the application
-* `newrelic_nginx_url` (string) - Url for nginx instanc
+* `newrelic_nginx_url` (string) - Url for nginx instance
 
 Dependencies
 ------------

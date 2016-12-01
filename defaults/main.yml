@@ -20,5 +20,6 @@ newrelic_haproxy_proxy: "cluster"
 newrelic_haproxy_proxy_type: "FRONTEND"
 newrelic_nginx_enabled: no
 newrelic_nginx_codename: "trusty"
+newrelic_nginx_poll_interval: 60
 newrelic_nginx_name: "example"
 newrelic_nginx_url: ""
