@@ -1,0 +1,1 @@
+license_key: {{ newrelic_infrastructure_license_key }}

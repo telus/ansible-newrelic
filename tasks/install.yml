@@ -47,29 +47,98 @@
     - using-newrelic
     - php
 
+- name: Create Licence Key File | newrelic-infra
+  template:
+    src: etc/newrelic-infra.yml
+    dest: /etc/newrelic-infra.yml
+  when: newrelic_infra_enabled
+  tags:
+    - newrelic-infra
+
+- name: Install Packages | apt
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - newrelic-infra
+  when: newrelic_infra_enabled
+  tags:
+    - software-installation
+    - using-apt
+
+- name: Install newrelic haproxy plugin gem
+  gem:
+    name: newrelic_haproxy_agent
+    state: latest
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - software-installation
+
+- name: Generate newrelic haproxy plugin configuration
+  shell: newrelic_haproxy_agent install
+  when: newrelic_haproxy_plugin_enabled
+
+- name: Add newrelic haproxy plugin configuration
+  template:
+    src: etc/newrelic_haproxy_agent.yml
+    dest: /etc/newrelic/newrelic_haproxy_agent.yml
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - newrelic-infra
+
+- name: add init script for newrelic haproxy plugin
+  copy:
+    src: etc/init.d/newrelic_haproxy_agent
+    dest: /etc/init.d/newrelic_haproxy_agent
+    mode: a+x
+  when: newrelic_haproxy_plugin_enabled
+  tags:
+    - newrelic-infra
+
+- name: Run newrelic haproxy plugin process
+  service:
+    name: newrelic_haproxy_agent
+    state: started
+    enabled: yes
+  when: newrelic_haproxy_plugin_enabled
+
 - name: Add public key for nginx signing
-  copy: src=nginx_signing.key dest=/tmp/nginx_signing.key
+  copy:
+    src: nginx_signing.key
+    dest: /tmp/nginx_signing.key
   when: newrelic_nginx_enabled
 
 - name: Add nginx signing key
-  shell: apt-key add /tmp/nginx_signing.key
+  apt_key: 
+    file: /tmp/nginx_signing.key
+    state: present
   when: newrelic_nginx_enabled
 
-- name: add nginx repositories
-  apt_repository: repo={{ item }} state=present
-  with_items:
-    - 'deb http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx'
-    - 'deb-src http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx'
+- name: Add first nginx repo for ubuntu
+  apt_repository: 
+    repo: deb http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx
+    state: present
   when: newrelic_nginx_enabled
 
-- name: install nginx newrelic plugin
+- name: Add second nginx repo for ubuntu
+  apt_repository: 
+    repo: deb-src http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx
+    state: present
+  when: newrelic_nginx_enabled
+
+- name: Install nginx newrelic plugin
   apt: name=nginx-nr-agent state=latest update_cache=yes
   when: newrelic_nginx_enabled
 
-- name: add nginx configuration template
-  template: src=nginx-nr-agent.ini dest=/etc/nginx-nr-agent/nginx-nr-agent.ini
+- name: Add nginx configuration template
+  template: 
+    src: nginx-nr-agent.ini
+    dest: /etc/nginx-nr-agent/nginx-nr-agent.ini
   when: newrelic_nginx_enabled
 
-- name: start newrelic nginx plugin
-  service: name=nginx-nr-agent state=started enabled=yes
+- name: Start newrelic nginx plugin
+  service: 
+    name: nginx-nr-agent
+    state: started
+    enabled: yes
   when: newrelic_nginx_enabled

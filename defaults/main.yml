@@ -8,6 +8,16 @@ newrelic_license: ""
 newrelic_server_labels:
   - "Project:{{ project }}"
   - "Environment:{{ environment_tier }}"
+newrelic_infra_enabled: no
+newrelic_infrastructure_license_key: ""
+newrelic_haproxy_plugin_enabled: no
+newrelic_haproxy_verbose: 0
+newrelic_haproxy_plugin_name: "my_haproxy_1"
+newrelic_haproxy_csv_uri: ""
+newrelic_haproxy_plugin_user: ""
+newrelic_haproxy_plugin_password: ""
+newrelic_haproxy_proxy: "cluster"
+newrelic_haproxy_proxy_type: "FRONTEND"
 newrelic_nginx_enabled: no
 newrelic_nginx_codename: "trusty"
 newrelic_nginx_name: "example"

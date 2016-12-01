@@ -15,10 +15,20 @@ Tunables
 * `newrelic_appname` (string) - Name of application
 * `newrelic_license` (string) - License key for NewRelic
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
+* `newrelic_infra_enabled` (boolean) - Enable Newrelic-Infra Monitoring?
+* `newrelic_infrastructure_license_key` (string) - Newrelic Licence Key
+* `newrelic_haproxy_plugin_enabled` (boolean) - Enable monitoring for HAProxy?
+* `newrelic_haproxy_verbose` (boolean) - Verbose output for plugin
+* `newrelic_haproxy_plugin_name` (string) - Display name of plugin on NewRelic
+* `newrelic_haproxy_csv_uri` (string) - URI of the haproxy CSV stats url
+* `newrelic_haproxy_plugin_user` (string) - User for HaProxy stats page
+* `newrelic_haproxy_plugin_password` (string) - Password for HaProxy stats page
+* `newrelic_haproxy_proxy` (string) - The name of the proxy to monitor. Proxies are typically listed in the haproxy.cfg file
+* `newrelic_haproxy_proxy_type` (string) - If multiple proxies have the same name, specify which proxy you want to monitor
 * `newrelic_nginx_enabled` (boolean) - Enable nginx monitoring?
 * `newrelic_nginx_codename` (string) - Ubuntu distro codename used for repo
 * `newrelic_nginx_name` (string) - Display name for the application
-* `newrelic_nginx_url` (string) - Url for nginx instance
+* `newrelic_nginx_url` (string) - Url for nginx instanc
 
 Dependencies
 ------------
@@ -41,6 +51,7 @@ Contributors
 ------------
 * [Chris Olstrom](https://colstrom.github.io/) | [e-mail](mailto:chris@olstrom.com) | [Twitter](https://twitter.com/ChrisOlstrom)
 * Travis Allan
-* Aaron Pederson
+* [Aaron Pederson](https://aaronpederson.github.io) | [e-mail](mailto:aaronpederson@gmail.com) | [Twitter](https://twitter.com/GunFuSamurai)
 * Prashant Kandathil
 * Ben Visser
+* Alexandar Podobnik
