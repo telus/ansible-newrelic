@@ -140,7 +140,7 @@
 
 - name: Add nginx configuration template
   template: 
-    src: etc/nginx-nr-agent.ini
+    src: etc/nginx-nr-agent/nginx-nr-agent.ini
     dest: /etc/nginx-nr-agent/nginx-nr-agent.ini
   when: newrelic_nginx_enabled
 
