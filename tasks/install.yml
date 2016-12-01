@@ -104,7 +104,7 @@
 
 - name: Add public key for nginx signing
   copy:
-    src: nginx_signing.key
+    src: tmp/nginx_signing.key
     dest: /tmp/nginx_signing.key
   when: newrelic_nginx_enabled
 
@@ -113,6 +113,8 @@
     file: /tmp/nginx_signing.key
     state: present
   when: newrelic_nginx_enabled
+  tags:
+    - using-apt
 
 - name: Add first nginx repo for ubuntu
   apt_repository: 
@@ -127,12 +129,18 @@
   when: newrelic_nginx_enabled
 
 - name: Install nginx newrelic plugin
-  apt: name=nginx-nr-agent state=latest update_cache=yes
+  apt:
+    name: nginx-nr-agent
+    state: latest
+    update_cache: yes
   when: newrelic_nginx_enabled
+  tags:
+    - software-installation
+    - using-apt
 
 - name: Add nginx configuration template
   template: 
-    src: nginx-nr-agent.ini
+    src: etc/nginx-nr-agent.ini
     dest: /etc/nginx-nr-agent/nginx-nr-agent.ini
   when: newrelic_nginx_enabled
 
