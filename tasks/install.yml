@@ -101,3 +101,52 @@
     state: started
     enabled: yes
   when: newrelic_haproxy_plugin_enabled
+
+- name: Add public key for nginx signing
+  copy:
+    src: tmp/nginx_signing.key
+    dest: /tmp/nginx_signing.key
+  when: newrelic_nginx_enabled
+
+- name: Add nginx signing key
+  apt_key: 
+    file: /tmp/nginx_signing.key
+    state: present
+  when: newrelic_nginx_enabled
+  tags:
+    - using-apt
+
+- name: Add first nginx repo for ubuntu
+  apt_repository: 
+    repo: deb http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx
+    state: present
+  when: newrelic_nginx_enabled
+
+- name: Add second nginx repo for ubuntu
+  apt_repository: 
+    repo: deb-src http://nginx.org/packages/ubuntu/ {{ newrelic_nginx_codename }} nginx
+    state: present
+  when: newrelic_nginx_enabled
+
+- name: Install nginx newrelic plugin
+  apt:
+    name: nginx-nr-agent
+    state: latest
+    update_cache: yes
+  when: newrelic_nginx_enabled
+  tags:
+    - software-installation
+    - using-apt
+
+- name: Add nginx configuration template
+  template: 
+    src: etc/nginx-nr-agent/nginx-nr-agent.ini
+    dest: /etc/nginx-nr-agent/nginx-nr-agent.ini
+  when: newrelic_nginx_enabled
+
+- name: Start newrelic nginx plugin
+  service: 
+    name: nginx-nr-agent
+    state: started
+    enabled: yes
+  when: newrelic_nginx_enabled
