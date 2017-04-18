@@ -1,5 +1,5 @@
 ---
-- name: Configure sysmond | license_key
+- name: Configure sysmond | license_key _TEST_
   lineinfile:
     state: present
     dest: /etc/newrelic/nrsysmond.cfg
