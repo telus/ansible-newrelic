@@ -6,4 +6,4 @@
       repository_key: "0xb31b29e5548c16bf"
       repository_url: "deb http://apt.newrelic.com/debian/ newrelic non-free"
     - role: ansible-newrelic
-      newrelic_license: "test99999999999999999999999999999999test"
+      newrelic_license: "{{ lookup('env','NEWRELIC_LICENSE') }}"
