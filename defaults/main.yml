@@ -23,3 +23,4 @@ newrelic_nginx_codename: "trusty"
 newrelic_nginx_poll_interval: 60
 newrelic_nginx_name: "example"
 newrelic_nginx_url: ""
+newrelic_php_config_path: "{{ php_available_modules_path }}/newrelic.ini"

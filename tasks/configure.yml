@@ -31,13 +31,13 @@
     - newrelic
 
 - name: Copy PHP APM Template
-  command: cp /usr/lib/newrelic-php5/scripts/newrelic.ini.template /etc/php5/mods-available/newrelic.ini
+  command: cp /usr/lib/newrelic-php5/scripts/newrelic.ini.template "{{ newrelic_php_config_path }}"
   when: newrelic_php_apm_enabled
 
 - name: Configure PHP APM | newrelic.license
   lineinfile:
     state: present
-    dest: /etc/php5/mods-available/newrelic.ini
+    dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.license'
     line: 'newrelic.license = "{{ newrelic_license }}"'
   notify: service | php5-fpm | reloaded
@@ -49,7 +49,7 @@
 - name: Configure PHP APM | newrelic.appname
   lineinfile:
     state: present
-    dest: /etc/php5/mods-available/newrelic.ini
+    dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.appname'
     line: 'newrelic.appname = "{{ newrelic_appname }}"'
   notify: service | php5-fpm | reloaded
@@ -61,7 +61,7 @@
 - name: Configure PHP APM | newrelic.daemon.proxy
   lineinfile:
     state: present
-    dest: /etc/php5/mods-available/newrelic.ini
+    dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.daemon\.proxy'
     line: "newrelic.daemon.proxy = \"{{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}\""
   notify: service | php5-fpm | reloaded
