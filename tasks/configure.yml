@@ -31,7 +31,7 @@
     - newrelic
 
 - name: Copy PHP APM Template
-  command: cp /usr/lib/newrelic-php5/scripts/newrelic.ini.template "{{ newrelic_php_config_path }}"
+  command: cp /usr/lib/newrelic-php{{ newrelic_php_version }}/scripts/newrelic.ini.template "{{ newrelic_php_config_path }}"
   when: newrelic_php_apm_enabled
 
 - name: Configure PHP APM | newrelic.license
@@ -40,7 +40,7 @@
     dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.license'
     line: 'newrelic.license = "{{ newrelic_license }}"'
-  notify: service | php5-fpm | reloaded
+  notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
   when: newrelic_php_apm_enabled
   tags:
     - newrelic
@@ -52,7 +52,7 @@
     dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.appname'
     line: 'newrelic.appname = "{{ newrelic_appname }}"'
-  notify: service | php5-fpm | reloaded
+  notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
   when: newrelic_php_apm_enabled
   tags:
     - newrelic
@@ -64,15 +64,15 @@
     dest: "{{ newrelic_php_config_path }}"
     regexp: '^;* *newrelic\.daemon\.proxy'
     line: "newrelic.daemon.proxy = \"{{ newrelic_proxy_address }}:{{ newrelic_proxy_port }}\""
-  notify: service | php5-fpm | reloaded
+  notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
   when: 'newrelic_php_apm_enabled and newrelic_proxy_required'
   tags:
     - newrelic
     - php
 
 - name: Enable PHP APM Extension
-  command: php5enmod newrelic
-  notify: service | php5-fpm | reloaded
+  command: php{{ newrelic_php_version }}enmod newrelic
+  notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
   when: newrelic_php_apm_enabled
 
 - name: Remove Duplicate Config
@@ -82,6 +82,8 @@
   with_items:
     - /etc/php5/fpm/conf.d/newrelic.ini
     - /etc/php5/cli/conf.d/newrelic.ini
+    - /etc/php/7.0/fpm/conf.d/newrelic.ini
+    - /etc/php/7.0/cli/conf.d/newrelic.ini
   tags:
     - newrelic
     - php

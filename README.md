@@ -9,6 +9,10 @@
 Tunables
 --------
 * `newrelic_php_apm_enabled` (boolean) - Enable APM for PHP?
+* `php_available_modules_path` (string) - PHP version declaration.
+* `newrelic_php_config_path' (string) - Location of newrelic.ini file (version specific)
+* `newrelic_php_version' (integer) - What version of PHP are you using?
+
 * `newrelic_proxy_required` (boolean) - Is a proxy required to reach NewRelic?
 * `newrelic_proxy_address` (string) - Address for proxy.
 * `newrelic_proxy_port` (integer) - Port for proxy
@@ -17,6 +21,7 @@ Tunables
 * `newrelic_server_labels` (array of label:value) - Label names and valus for NewRelic display
 * `newrelic_infra_enabled` (boolean) - Enable Newrelic-Infra Monitoring?
 * `newrelic_infrastructure_license_key` (string) - Newrelic Licence Key
+
 * `newrelic_haproxy_plugin_enabled` (boolean) - Enable monitoring for HAProxy?
 * `newrelic_haproxy_verbose` (boolean) - Verbose output for plugin
 * `newrelic_haproxy_plugin_name` (string) - Display name of plugin on NewRelic
@@ -25,6 +30,7 @@ Tunables
 * `newrelic_haproxy_plugin_password` (string) - Password for HaProxy stats page
 * `newrelic_haproxy_proxy` (string) - The name of the proxy to monitor. Proxies are typically listed in the haproxy.cfg file
 * `newrelic_haproxy_proxy_type` (string) - If multiple proxies have the same name, specify which proxy you want to monitor
+
 * `newrelic_nginx_enabled` (boolean) - Enable nginx monitoring?
 * `newrelic_nginx_codename` (string) - Ubuntu distro codename used for repo
 * `newrelic_nginx_poll_interval` (integer) - Poll interval for nginx plugin
