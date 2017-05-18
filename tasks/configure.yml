@@ -71,9 +71,14 @@
     - php
 
 - name: Enable PHP APM Extension
-  command: php{{ newrelic_php_version }}enmod newrelic
+  command: php5enmod newrelic
   notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
   when: newrelic_php_apm_enabled
+
+- name: Enable PHP7.0 APM Extension
+  command: phpenmod newrelic
+  notify: "service | php{{ newrelic_php_version }}-fpm | reloaded"
+  when: newrelic_php_version == '7.0'
 
 - name: Remove Duplicate Config
   file:
