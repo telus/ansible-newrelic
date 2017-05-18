@@ -1,5 +1,9 @@
 ---
 newrelic_php_apm_enabled: no
+php_available_modules_path: /etc/php5/mods-available
+newrelic_php_config_path: "{{ php_available_modules_path }}/newrelic.ini"
+newrelic_php_version: 5
+
 newrelic_proxy_required: no
 newrelic_proxy_address: "outbound.{{ project }}-{{ environment_tier }}.{{ domain }}"
 newrelic_proxy_port: 3128
@@ -10,6 +14,7 @@ newrelic_server_labels:
   - "Environment:{{ environment_tier }}"
 newrelic_infra_enabled: no
 newrelic_infrastructure_license_key: ""
+
 newrelic_haproxy_plugin_enabled: no
 newrelic_haproxy_verbose: 0
 newrelic_haproxy_plugin_name: "my_haproxy_1"
@@ -18,9 +23,10 @@ newrelic_haproxy_plugin_user: ""
 newrelic_haproxy_plugin_password: ""
 newrelic_haproxy_proxy: "cluster"
 newrelic_haproxy_proxy_type: "FRONTEND"
+
 newrelic_nginx_enabled: no
 newrelic_nginx_codename: "trusty"
 newrelic_nginx_poll_interval: 60
 newrelic_nginx_name: "example"
 newrelic_nginx_url: ""
-newrelic_php_config_path: "{{ php_available_modules_path }}/newrelic.ini"
+
