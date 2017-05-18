@@ -12,6 +12,7 @@ Tunables
 * `php_available_modules_path` (string) - PHP version declaration.
 * `newrelic_php_config_path` (string) - Location of newrelic.ini file (version specific)
 * `newrelic_php_version` (integer) - What version of PHP are you using?
+* `newrelic_phpenmod` (string) - What version of PHPenmod is required?
 
 * `newrelic_proxy_required` (boolean) - Is a proxy required to reach NewRelic?
 * `newrelic_proxy_address` (string) - Address for proxy.
