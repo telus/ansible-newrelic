@@ -31,7 +31,7 @@
     - newrelic
 
 - name: Copy PHP APM Template
-  command: cp /usr/lib/newrelic-php{{ newrelic_php_version }}/scripts/newrelic.ini.template "{{ newrelic_php_config_path }}"
+  command: "cp /usr/lib/newrelic-php{{ newrelic_php_version }}/scripts/newrelic.ini.template {{ newrelic_php_config_path }}"
   when: newrelic_php_apm_enabled
 
 - name: Configure PHP APM | newrelic.license
